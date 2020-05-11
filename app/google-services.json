@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "183910610938",
+    "firebase_url": "https://glucose-prediction-4b002.firebaseio.com",
+    "project_id": "glucose-prediction-4b002",
+    "storage_bucket": "glucose-prediction-4b002.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:183910610938:android:4c4107945bb45e99845643",
+        "android_client_info": {
+          "package_name": "com.alfredoqt.glucoseprediction"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "183910610938-tsfgvhqsk92686acj3aqp8976tiphliv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alfredoqt.glucoseprediction",
+            "certificate_hash": "2df7bc66e8359496fce8bd7f947780d6ce67f1bf"
+          }
+        },
+        {
+          "client_id": "183910610938-4pjlllm103kipee3s632g2ovkm4ldskn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_39YuG5d2sXJPfWyTwigvHX9x5kY8kqE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "183910610938-4pjlllm103kipee3s632g2ovkm4ldskn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

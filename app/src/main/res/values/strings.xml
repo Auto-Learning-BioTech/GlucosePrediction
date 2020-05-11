@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Glucose Prediction</string>
+    <string name="msg_token_fmt">example</string>
 </resources>
