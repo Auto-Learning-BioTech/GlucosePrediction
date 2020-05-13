@@ -18,6 +18,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import org.threeten.bp.LocalDateTime;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 public class NewEntryFragment extends Fragment {
@@ -72,11 +73,9 @@ public class NewEntryFragment extends Fragment {
         editText = view.findViewById(R.id.glucose_text_field);
         button = view.findViewById(R.id.send_button);
 
-        LocalDateTime now = LocalDateTime.now();
-
         SimpleDateFormat formatter
                 = new SimpleDateFormat ("yyyy.MM.dd hh:mm:ss", Locale.getDefault());
-        String nowDate = formatter.format(LocalDateTime.now());
+        String nowDate = formatter.format(new Date());
 
         textView.setText(getString(R.string.msg_time, nowDate));
 
