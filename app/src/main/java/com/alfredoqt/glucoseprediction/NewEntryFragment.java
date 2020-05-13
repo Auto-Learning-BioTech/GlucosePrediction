@@ -52,12 +52,12 @@ public class NewEntryFragment extends Fragment {
                 } else if (resource.status == RetrofitResourceStatus.ERROR) {
                     Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
                     if (button != null) {
-                        button.setEnabled(false);
+                        button.setEnabled(true);
                     }
                 } else {
                     Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
                     if (button != null) {
-                        button.setEnabled(false);
+                        button.setEnabled(true);
                     }
                 }
             }
