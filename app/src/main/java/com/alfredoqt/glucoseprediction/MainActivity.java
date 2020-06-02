@@ -5,7 +5,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -34,5 +38,48 @@ public class MainActivity extends AppCompatActivity {
 
         viewPager.setAdapter(adapter);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.log_out:
+                handleLogout();
+                return true;
+            case R.id.status_request:
+                handleStatusRequest();
+                return true;
+            case R.id.bulk_upload:
+                handleBulkUpload();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void handleLogout() {
+        SharedPreferencesUtils.getPreferences(this)
+                .edit()
+                .remove(getString(R.string.saved_username))
+                .apply();
+        Intent intent = new Intent(this, RegisterActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        finish();
+        startActivity(intent);
+    }
+
+    private void handleStatusRequest() {
+    }
+
+    private void handleBulkUpload() {
+    }
+
 
 }
