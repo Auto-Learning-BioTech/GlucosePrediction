@@ -11,17 +11,21 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.charts.ScatterChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.data.ScatterData;
+import com.github.mikephil.charting.data.ScatterDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.IScatterDataSet;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HistoryFragment extends Fragment {
 
-    private LineChart chart;
+    private ScatterChart chart;
     private GlucosePredictionHistoryViewModel mViewModel;
 
     private static final String ONE_MONTH = "30";
@@ -46,10 +50,10 @@ public class HistoryFragment extends Fragment {
                         for (GlucoseHistoryEntry entry : resource.result) {
                             yEntries.add(new Entry(Integer.parseInt(entry.glucoseLevel), Integer.parseInt(entry.hour)));
                         }
-                        LineDataSet set = new LineDataSet(yEntries, "Hour vs. Glucose");
-                        List<ILineDataSet> sets = new ArrayList<>();
+                        ScatterDataSet set = new ScatterDataSet(yEntries, "Hour vs. Glucose");
+                        List<IScatterDataSet> sets = new ArrayList<>();
                         sets.add(set);
-                        LineData data = new LineData(sets);
+                        ScatterData data = new ScatterData(sets);
 
                         chart.setData(data);
                     }
