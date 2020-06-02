@@ -30,14 +30,14 @@ public class HistoryFragment extends Fragment {
 
     private static final String ONE_MONTH = "30";
     private static final String THREE_MONTHS = "90";
-    private static final String ONE_YEAR = "365";
+    private static final String ONE_YEAR = "500";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mViewModel = new GlucosePredictionHistoryViewModel(getContext());
         configureObservers();
-        mViewModel.onGetHistory(ONE_MONTH);
+        mViewModel.onGetHistory(ONE_YEAR);
     }
 
     private void configureObservers() {
