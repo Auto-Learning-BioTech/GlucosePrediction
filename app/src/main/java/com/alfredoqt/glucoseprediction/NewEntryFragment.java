@@ -34,7 +34,7 @@ public class NewEntryFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mViewModel = new GlucosePredictionEntryViewModel();
+        mViewModel = new GlucosePredictionEntryViewModel(getContext());
         configureObservers();
     }
 
@@ -92,12 +92,16 @@ public class NewEntryFragment extends Fragment {
                     }
                     // Call view model
                     LocalDateTime localDateTime = LocalDateTime.now();
+                    String year = String.valueOf(localDateTime.getYear());
+                    String month = String.valueOf(localDateTime.getMonthValue());
+                    String day = String.valueOf(localDateTime.getDayOfMonth());
+                    String hour = String.valueOf(localDateTime.getHour());
                     mViewModel.onNewEntry(
-                            String.valueOf(localDateTime.getHour()),
-                            String.valueOf(level),
-                            String.valueOf(localDateTime.getDayOfMonth()),
-                            String.valueOf(localDateTime.getMonth()),
-                            "alfredoqt"
+                            year,
+                            month,
+                            day,
+                            hour,
+                            String.valueOf(level)
                     );
                 } catch (NumberFormatException e) {
                     return;

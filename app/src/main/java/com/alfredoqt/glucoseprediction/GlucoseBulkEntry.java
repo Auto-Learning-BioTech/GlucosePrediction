@@ -4,7 +4,10 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class GlucoseHistory {
+public class GlucoseBulkEntry {
+
+    @SerializedName("username")
+    public String username;
 
     @SerializedName("data")
     public List<GlucoseHistoryEntry> data;

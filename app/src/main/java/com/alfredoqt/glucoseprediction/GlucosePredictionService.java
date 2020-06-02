@@ -17,4 +17,7 @@ public interface GlucosePredictionService {
     @GET("status")
     Call<Void> requestStatus(@Query("hour") String hour, @Query("token") String token);
 
+    @POST("insert_json_db")
+    Call<String> uploadBulk(@Body GlucoseBulkEntry body);
+
 }

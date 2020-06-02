@@ -69,10 +69,25 @@ public class MainActivity extends AppCompatActivity {
                 .edit()
                 .remove(getString(R.string.saved_username))
                 .apply();
-        Intent intent = new Intent(this, RegisterActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        finish();
-        startActivity(intent);
+        // Delete all local entries
+        GlucosePredictionDatabase.databaseWriteExecutor
+                .execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        GlucosePredictionDatabase.getInstance(MainActivity.this)
+                                .glucoseDao()
+                                .deleteAll();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                finish();
+                                startActivity(intent);
+                            }
+                        });
+                    }
+                });
     }
 
     private void handleStatusRequest() {

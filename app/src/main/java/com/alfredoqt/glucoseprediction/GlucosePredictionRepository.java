@@ -29,4 +29,8 @@ public class GlucosePredictionRepository {
         mService.requestStatus(hour, token).enqueue(callback);
     }
 
+    public void uploadBulk(GlucoseBulkEntry body, Callback<String> callback) {
+        mService.uploadBulk(body).enqueue(callback);
+    }
+
 }
