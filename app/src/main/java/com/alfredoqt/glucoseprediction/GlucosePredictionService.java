@@ -27,6 +27,6 @@ public interface GlucosePredictionService {
 
     @FormUrlEncoded
     @POST("user_predict")
-    Call<String> userPredict(@Field("username") String username, @Field("hour") String hour);
+    Call<Void> userPredict(@Field("username") String username, @Field("hour") String hour);
 
 }

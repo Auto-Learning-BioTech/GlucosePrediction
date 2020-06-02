@@ -103,9 +103,9 @@ public class MainViewModel extends ViewModel {
         loading.status = RetrofitResourceStatus.LOADING;
         userPredict.setValue(loading);
 
-        repository.userPredict(username, hour, new Callback<String>() {
+        repository.userPredict(username, hour, new Callback<Void>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<Void> call, Response<Void> response) {
                 RetrofitResource<String> resource = new RetrofitResource<>();
                 if (response.isSuccessful()) {
                     resource.status = RetrofitResourceStatus.SUCCESS;
@@ -116,7 +116,7 @@ public class MainViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<Void> call, Throwable t) {
                 RetrofitResource<String> resource = new RetrofitResource<>();
                 resource.status = RetrofitResourceStatus.ERROR;
                 userPredict.setValue(resource);

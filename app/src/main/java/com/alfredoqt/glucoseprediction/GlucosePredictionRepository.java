@@ -37,7 +37,7 @@ public class GlucosePredictionRepository {
         mService.uploadBulk(body).enqueue(callback);
     }
 
-    public void userPredict(String username, String hour, Callback<String> callback) {
+    public void userPredict(String username, String hour, Callback<Void> callback) {
         mService.userPredict(username, hour).enqueue(callback);
     }
 
