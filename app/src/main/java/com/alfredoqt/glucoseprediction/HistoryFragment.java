@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -25,25 +24,29 @@ public class HistoryFragment extends Fragment {
     private LineChart chart;
     private GlucosePredictionHistoryViewModel mViewModel;
 
+    private static final String ONE_MONTH = "30";
+    private static final String THREE_MONTHS = "90";
+    private static final String ONE_YEAR = "365";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mViewModel = new GlucosePredictionHistoryViewModel();
+        mViewModel = new GlucosePredictionHistoryViewModel(getContext());
         configureObservers();
-        mViewModel.onGetHistory("personal.csv");
+        mViewModel.onGetHistory(ONE_MONTH);
     }
 
     private void configureObservers() {
-        mViewModel.mHistory.observe(this, new Observer<RetrofitResource<GlucoseHistory>>() {
+        mViewModel.mHistory.observe(this, new Observer<RetrofitResource<List<GlucoseHistoryEntry>>>() {
             @Override
-            public void onChanged(RetrofitResource<GlucoseHistory> resource) {
+            public void onChanged(RetrofitResource<List<GlucoseHistoryEntry>> resource) {
                 if (resource.status == RetrofitResourceStatus.SUCCESS) {
                     if (chart != null) {
                         List<Entry> yEntries = new ArrayList<>();
-                        for (GlucoseHistoryEntry entry : resource.result.data) {
-                            yEntries.add(new Entry(Integer.parseInt(entry.hour), Integer.parseInt(entry.level)));
+                        for (GlucoseHistoryEntry entry : resource.result) {
+                            yEntries.add(new Entry(Integer.parseInt(entry.glucoseLevel), Integer.parseInt(entry.hour)));
                         }
-                        LineDataSet set = new LineDataSet(yEntries, "Glucose vs. Hour");
+                        LineDataSet set = new LineDataSet(yEntries, "Hour vs. Glucose");
                         List<ILineDataSet> sets = new ArrayList<>();
                         sets.add(set);
                         LineData data = new LineData(sets);

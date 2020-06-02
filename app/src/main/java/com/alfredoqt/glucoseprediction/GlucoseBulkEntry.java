@@ -10,6 +10,6 @@ public class GlucoseBulkEntry {
     public String username;
 
     @SerializedName("data")
-    public List<GlucoseHistoryEntry> data;
+    public List<GlucoseEntry> data;
 
 }

@@ -1,5 +1,7 @@
 package com.alfredoqt.glucoseprediction;
 
+import java.util.List;
+
 import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -23,8 +25,8 @@ public class GlucosePredictionRepository {
         mService.postNewGlucoseEntry(body).enqueue(callback);
     }
 
-    public void getHistory(String fileName, Callback<GlucoseHistory> callback) {
-        mService.getGlucoseHistory(fileName).enqueue(callback);
+    public void getHistory(String username, String days, Callback<List<GlucoseHistoryEntry>> callback) {
+        mService.getGlucoseHistory(username, days).enqueue(callback);
     }
 
     public void getStatus(String hour, String token, Callback<Void> callback) {

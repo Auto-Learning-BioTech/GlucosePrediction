@@ -62,7 +62,7 @@ public class MainViewModel extends ViewModel {
                 .getString(mContext.getString(R.string.saved_username), "");
         body.data = new ArrayList<>();
         for (GlucoseEntryEntity entity : entities) {
-            GlucoseHistoryEntry entry = new GlucoseHistoryEntry();
+            GlucoseEntry entry = new GlucoseEntry();
             entry.day = entity.day;
             entry.hour = entity.hour;
             entry.level = entity.level;

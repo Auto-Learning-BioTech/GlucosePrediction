@@ -1,5 +1,7 @@
 package com.alfredoqt.glucoseprediction;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -13,8 +15,9 @@ public interface GlucosePredictionService {
     @POST("insert")
     Call<Void> postNewGlucoseEntry(@Body NewEntryBody body);
 
-    @GET("get/graph_data")
-    Call<GlucoseHistory> getGlucoseHistory(@Query("name") String csv);
+    @FormUrlEncoded
+    @POST("get_history")
+    Call<List<GlucoseHistoryEntry>> getGlucoseHistory(@Field("username") String username, @Field("days") String days);
 
     @GET("status")
     Call<Void> requestStatus(@Query("hour") String hour, @Query("token") String token);
