@@ -3,6 +3,7 @@ package com.alfredoqt.glucoseprediction;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class GlucosePredictionRepository {
 
@@ -11,6 +12,7 @@ public class GlucosePredictionRepository {
     public GlucosePredictionRepository() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ApiConstants.URL)
+                .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -31,6 +33,10 @@ public class GlucosePredictionRepository {
 
     public void uploadBulk(GlucoseBulkEntry body, Callback<String> callback) {
         mService.uploadBulk(body).enqueue(callback);
+    }
+
+    public void userPredict(String username, String hour, Callback<String> callback) {
+        mService.userPredict(username, hour).enqueue(callback);
     }
 
 }

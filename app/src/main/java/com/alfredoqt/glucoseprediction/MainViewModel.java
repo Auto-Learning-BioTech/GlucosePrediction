@@ -11,7 +11,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class MainViewModel extends ViewModel {
 
@@ -19,15 +18,17 @@ public class MainViewModel extends ViewModel {
     private GlucosePredictionRepository repository;
     public MutableLiveData<RetrofitResource<List<GlucoseEntryEntity>>> currentEntries;
     public MutableLiveData<RetrofitResource<String>> uploadBulk;
+    public MutableLiveData<RetrofitResource<String>> userPredict;
 
     public MainViewModel(Context context) {
         mContext = context;
         repository = new GlucosePredictionRepository();
         currentEntries = new MutableLiveData<>();
         uploadBulk = new MutableLiveData<>();
+        userPredict = new MutableLiveData<>();
     }
 
-    private void onGetEntries() {
+    public void onGetEntries() {
         RetrofitResource<List<GlucoseEntryEntity>> loading = new RetrofitResource<>();
         loading.status = RetrofitResourceStatus.LOADING;
         currentEntries.setValue(loading);
@@ -44,13 +45,14 @@ public class MainViewModel extends ViewModel {
                                 .glucoseDao()
                                 .deleteAll();
                         RetrofitResource<List<GlucoseEntryEntity>> resource = new RetrofitResource<>();
+                        resource.result = entries;
                         resource.status = RetrofitResourceStatus.SUCCESS;
                         currentEntries.postValue(resource);
                     }
                 });
     }
 
-    private void onUploadEntries(List<GlucoseEntryEntity> entities) {
+    public void onUploadEntries(List<GlucoseEntryEntity> entities) {
         RetrofitResource<String> loading = new RetrofitResource<>();
         loading.status = RetrofitResourceStatus.LOADING;
         uploadBulk.setValue(loading);
@@ -90,6 +92,34 @@ public class MainViewModel extends ViewModel {
                 RetrofitResource<String> resource = new RetrofitResource<>();
                 resource.status = RetrofitResourceStatus.ERROR;
                 uploadBulk.setValue(resource);
+            }
+        });
+    }
+
+    public void onUserPredict(String hour) {
+        String username = SharedPreferencesUtils.getPreferences(mContext)
+                .getString(mContext.getString(R.string.saved_username), "");
+        RetrofitResource<String> loading = new RetrofitResource<>();
+        loading.status = RetrofitResourceStatus.LOADING;
+        userPredict.setValue(loading);
+
+        repository.userPredict(username, hour, new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                RetrofitResource<String> resource = new RetrofitResource<>();
+                if (response.isSuccessful()) {
+                    resource.status = RetrofitResourceStatus.SUCCESS;
+                } else {
+                    resource.status = RetrofitResourceStatus.ERROR;
+                }
+                userPredict.setValue(resource);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                RetrofitResource<String> resource = new RetrofitResource<>();
+                resource.status = RetrofitResourceStatus.ERROR;
+                userPredict.setValue(resource);
             }
         });
     }

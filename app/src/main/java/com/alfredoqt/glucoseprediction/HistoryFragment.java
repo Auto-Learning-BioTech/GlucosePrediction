@@ -40,7 +40,7 @@ public class HistoryFragment extends Fragment {
                 if (resource.status == RetrofitResourceStatus.SUCCESS) {
                     if (chart != null) {
                         List<Entry> yEntries = new ArrayList<>();
-                        for (GlucoseHistory.GlucoseHistoryEntry entry : resource.result.data) {
+                        for (GlucoseHistoryEntry entry : resource.result.data) {
                             yEntries.add(new Entry(Integer.parseInt(entry.hour), Integer.parseInt(entry.level)));
                         }
                         LineDataSet set = new LineDataSet(yEntries, "Glucose vs. Hour");
