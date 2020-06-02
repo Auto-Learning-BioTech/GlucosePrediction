@@ -29,7 +29,7 @@
             android:layout_marginStart="@dimen/dimen_regular_padding"
             android:layout_marginEnd="@dimen/dimen_regular_padding"
             android:layout_height="wrap_content"
-            android:hint="@string/msg_new_user_label">
+            android:hint="@string/msg_existing_user_label">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/user_text_field"
@@ -49,12 +49,13 @@
             android:text="@string/action_send"/>
 
         <com.google.android.material.button.MaterialButton
+            android:onClick="clickRegister"
             android:layout_marginTop="@dimen/dimen_regular_padding"
             android:layout_marginStart="@dimen/dimen_regular_padding"
             android:layout_marginEnd="@dimen/dimen_regular_padding"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/action_login"/>
+            android:text="@string/action_register"/>
     </LinearLayout>
     <RelativeLayout
         android:id="@+id/progress"

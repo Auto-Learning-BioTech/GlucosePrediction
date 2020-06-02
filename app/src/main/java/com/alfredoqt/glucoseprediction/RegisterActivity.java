@@ -76,4 +76,9 @@ public class RegisterActivity extends AppCompatActivity {
 
         mViewModel.onRegisterUser(mEditText.getText().toString());
     }
+
+    public void clickLogin(View view) {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
 }

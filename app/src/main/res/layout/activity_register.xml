@@ -49,6 +49,7 @@
             android:text="@string/action_send"/>
 
         <com.google.android.material.button.MaterialButton
+            android:onClick="clickLogin"
             android:layout_marginTop="@dimen/dimen_regular_padding"
             android:layout_marginStart="@dimen/dimen_regular_padding"
             android:layout_marginEnd="@dimen/dimen_regular_padding"
