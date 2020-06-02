@@ -1,11 +1,11 @@
-# Glucose Prediction Android App
+# Glucose Prediction Aplicación Android 
 
-## Features
-- It lets an user create a new glucose level entry for the current hour
-- It lets an user see their history of glucose vs hour
+## Características
+- Permite al usuario crear una nueva entrada de nivel de glucosa para la hora actual
+- Permite al usuario ver su historial de glucosa vs. tiempo
 
-## Instructions for running the app
-- Go to *[app/main/java/com/alfredoqt/glucoseprediction/ApiConstants.java](https://github.com/Auto-Learning-BioTech/GlucosePrediction/blob/master/app/src/main/java/com/alfredoqt/glucoseprediction/ApiConstants.java)* and make the following changes to the *HOST* constant:
+## Instrucciones para ejecutar la aplicación
+- Ir hacia *[app/main/java/com/alfredoqt/glucoseprediction/ApiConstants.java](https://github.com/Auto-Learning-BioTech/GlucosePrediction/blob/master/app/src/main/java/com/alfredoqt/glucoseprediction/ApiConstants.java)* y realice los siguientes cambios en la constante *HOST* :
 
 ```java
 public class ApiConstants {
@@ -16,7 +16,7 @@ public class ApiConstants {
 
 }
 ```
-- Go to *[app/main/res/xml/network_security_config](https://github.com/Auto-Learning-BioTech/GlucosePrediction/blob/master/app/src/main/res/xml/network_security_config.xml)* and make the following changes. This will add your ip address to the app's trusted domains so you can make insecure *http* calls
+- Ir hacia *[app/main/res/xml/network_security_config](https://github.com/Auto-Learning-BioTech/GlucosePrediction/blob/master/app/src/main/res/xml/network_security_config.xml)* y haga los siguientes cambios. Esto agregará su dirección IP a los dominios de confianza de la aplicación para que pueda hacer llamadas inseguras *http* 
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -28,16 +28,16 @@ public class ApiConstants {
 </network-security-config>
 ```
 
-## Next steps
-- Make a background service that makes a request to the [Prediction API](https://github.com/Auto-Learning-BioTech/Glucose-Prediction) every hour to get the predicted status of the glucose level at the current date
-- Let the users register themselves in the application in order to have actual custom data
+## Próximos pasos
+- Realice un servicio en segundo plano que realice una solicitud a [Prediction API](https://github.com/Auto-Learning-BioTech/Glucose-Prediction) cada hora para obtener el estado previsto del nivel de glucosa en la fecha actual.
+- Permita que los usuarios se registren en la aplicación para tener datos personalizados reales
 
-## Screenshots
+## Capturas
 
-### New Entry
+### Nueva entrada
 
 ![New Entry](https://github.com/Auto-Learning-BioTech/GlucosePrediction/blob/master/screenshots/new_entry.png)
 
-### History
+### Historial
 
 ![History](https://github.com/Auto-Learning-BioTech/GlucosePrediction/blob/master/screenshots/history.png)
