@@ -10,4 +10,10 @@
     <string name="msg_new_entry_label">Nivel de glucosa</string>
     <string name="action_send">Enviar</string>
     <string name="msg_time">Fecha y hora: %s</string>
+    <string name="title_register">Registro</string>
+    <string name="preferences_name">com.alfredoqt.glucoseprediction.settings</string>
+    <string name="saved_username">PREF_USERNAME</string>
+    <string name="msg_new_user_label">Nuevo usuario</string>
+    <string name="action_login">Iniciar sesión</string>
+    <string name="title_login">Inicia sesión</string>
 </resources>

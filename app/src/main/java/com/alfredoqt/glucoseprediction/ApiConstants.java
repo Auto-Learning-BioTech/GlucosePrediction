@@ -1,6 +1,6 @@
 package com.alfredoqt.glucoseprediction;
 
-public class ApiConstants {
+public abstract class ApiConstants {
 
     public static final String SCHEME = "http";
     // TODO: Change with your local ip or wherever the api is running
