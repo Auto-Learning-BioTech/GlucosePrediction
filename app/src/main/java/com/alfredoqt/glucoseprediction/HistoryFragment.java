@@ -19,8 +19,10 @@ import com.github.mikephil.charting.data.ScatterData;
 import com.github.mikephil.charting.data.ScatterDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.IScatterDataSet;
+import com.github.mikephil.charting.utils.EntryXComparator;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class HistoryFragment extends Fragment {
@@ -50,6 +52,7 @@ public class HistoryFragment extends Fragment {
                         for (GlucoseHistoryEntry entry : resource.result) {
                             yEntries.add(new Entry(Integer.parseInt(entry.glucoseLevel), Integer.parseInt(entry.hour)));
                         }
+                        Collections.sort(yEntries, new EntryXComparator());
                         ScatterDataSet set = new ScatterDataSet(yEntries, "Hour vs. Glucose");
                         List<IScatterDataSet> sets = new ArrayList<>();
                         sets.add(set);
